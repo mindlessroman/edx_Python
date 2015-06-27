@@ -31,3 +31,29 @@ for i in range (len(s)):
                 j = 0
                 break  
 print(count) 
+
+####################
+#part 3: longest alphabetical substring
+#take the first one if there are multiple
+attempt1 = 'abckjhi'
+attempt2 = 'ishkabibble'
+attempt3 = 'zyxwvut'
+def alphasub (s):
+    substr = ''
+    holder = s[0] #first letter always
+    for i in range(1,len(s)):
+        j = i - 1
+        if s[i] >= s[j]:
+            holder += s[i]
+        elif s[i] < s[j]:
+            if len(substr) <= len(holder):
+                if len(substr) != len(holder):
+                    substr = holder
+                holder = s[i]
+            else:
+                holder = s[j] 
+    return 'Longest substring in alphabetical order is: ' + str(substr)
+alphasub(attempt1)
+alphasub(attempt2)
+alphasub(attempt3)
+alphasub('azcbobobegghakl') #test in example 
